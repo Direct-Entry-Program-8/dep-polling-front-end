@@ -1,9 +1,9 @@
 <section>
-  <h1>Here is the title</h1>
+  <h1>{{poll.title}}</h1>
   <div>
-    <span id="up">▲</span> 10
-    <span id="down">▼</span>5
+    <span id="up">▲</span> {{poll.upVotes}}
+    <span id="down">▼</span> {{poll.downVotes}}
   </div>
 </section>
-<small class="text-black-50">Created by: Admin</small>
+<small class="text-black-50">Created by: {{poll.createdBy}}</small>
 
