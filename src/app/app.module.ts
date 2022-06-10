@@ -9,6 +9,7 @@ import { PollComponent } from './poll/poll.component';
 import { PollDetailComponent } from './poll-detail/poll-detail.component';
 import {UserService} from "./service/user.service";
 import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {FormsModule} from "@angular/forms";
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
