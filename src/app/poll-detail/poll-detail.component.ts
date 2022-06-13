@@ -10,8 +10,11 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class PollDetailComponent implements OnInit {
 
-  private voted = false;
+  private lastVote: null| string = null;
   poll!: Poll;
+  upVoteClasses = {
+    gray: this.lastVote === 'up'
+  }
 
   constructor(private httpService: HttpClient,
               private activatedRouteService: ActivatedRoute,
@@ -31,14 +34,18 @@ export class PollDetailComponent implements OnInit {
   }
 
   voteUp(): void {
-    if (!this.voted)
-    this.poll.upVotes++;
-    this.voted = true;
+    if (!this.lastVote || this.lastVote === 'down'){
+      this.poll.upVotes++;
+      if (this.lastVote === 'down') this.poll.downVotes--;
+      this.lastVote = 'up';
+    }
   }
 
   voteDown(): void {
-    if (!this.voted)
-    this.poll.downVotes++;
-    this.voted = true;
+    if (!this.lastVote || this.lastVote === 'up'){
+      this.poll.downVotes++;
+      if (this.lastVote === 'up') this.poll.upVotes--;
+      this.lastVote = 'down';
+    }
   }
 }
