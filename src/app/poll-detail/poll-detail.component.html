@@ -3,14 +3,14 @@
   <img id="back" src="assets/image/back-arrow.png" alt="Back" (click)="goBack()">
   <h1 class="text-black">{{poll?.title}}</h1>
   </div>
-  <img id="delete" src="assets/image/bin.png" alt="delete">
+  <img *ngIf="isTrashVisible()" (click)="deletePoll()" id="delete" src="assets/image/bin.png" alt="delete">
 </header>
 <small class="text-black-50">Created by: {{poll?.createdBy}}</small>
 <main>
   <div id="up-wrapper">
-    {{poll?.upVotes}} <span [class.gray]="lastVote === 'up'" (click)="voteUp()" id="up" >▲</span>
+    {{poll?.upVotes}} <span [class.gray]="lastVote === 'UP'" (click)="voteUp()" id="up" >▲</span>
   </div>
   <div id="down-wrapper">
-    <span [class.gray]="lastVote === 'down'"  (click)="voteDown()" id="down">▼</span> {{poll?.downVotes}}
+    <span [class.gray]="lastVote === 'DOWN'"  (click)="voteDown()" id="down">▼</span> {{poll?.downVotes}}
   </div>
 </main>
