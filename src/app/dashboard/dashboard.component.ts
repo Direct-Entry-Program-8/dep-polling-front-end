@@ -22,6 +22,12 @@ export class DashboardComponent implements OnInit {
     if (!this.userService.getPrincipal()){
       this.routerService.navigateByUrl('login');
     }
+
+    this.httpService.get<Array<Poll>>('http://localhost:8080/polling-system/api/v1/polls')
+      .subscribe({
+        next: value => this.polls = value,
+        error: err => console.error(err)
+      });
   }
 
   createPoll(title: string) {
@@ -31,7 +37,7 @@ export class DashboardComponent implements OnInit {
       this.httpService.post<Poll>('http://localhost:8080/polling-system/api/v1/polls', poll)
         .subscribe({
           next: value => {
-            this.polls.push(value);
+            this.polls.unshift(value);
           },
           error: err => {
             console.error(err);
