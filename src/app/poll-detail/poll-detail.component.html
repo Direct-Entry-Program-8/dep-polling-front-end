@@ -8,9 +8,9 @@
 <small class="text-black-50">Created by: {{poll?.createdBy}}</small>
 <main>
   <div id="up-wrapper">
-    {{poll?.upVotes}} <span [ngClass]="upVoteClasses" (click)="voteUp()" id="up" >▲</span>
+    {{poll?.upVotes}} <span [class.gray]="lastVote === 'up'" (click)="voteUp()" id="up" >▲</span>
   </div>
   <div id="down-wrapper">
-    <span (click)="voteDown()" id="down">▼</span> {{poll?.downVotes}}
+    <span [class.gray]="lastVote === 'down'"  (click)="voteDown()" id="down">▼</span> {{poll?.downVotes}}
   </div>
 </main>

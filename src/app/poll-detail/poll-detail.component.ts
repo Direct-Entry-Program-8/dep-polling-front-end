@@ -10,11 +10,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class PollDetailComponent implements OnInit {
 
-  private lastVote: null| string = null;
+  lastVote: null| string = null;
   poll!: Poll;
-  upVoteClasses = {
-    gray: this.lastVote === 'up'
-  }
 
   constructor(private httpService: HttpClient,
               private activatedRouteService: ActivatedRoute,
