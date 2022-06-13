@@ -10,6 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class PollDetailComponent implements OnInit {
 
+  private voted = false;
   poll!: Poll;
 
   constructor(private httpService: HttpClient,
@@ -27,5 +28,17 @@ export class PollDetailComponent implements OnInit {
 
   goBack(): void {
     this.routerService.navigateByUrl('/dashboard');
+  }
+
+  voteUp(): void {
+    if (!this.voted)
+    this.poll.upVotes++;
+    this.voted = true;
+  }
+
+  voteDown(): void {
+    if (!this.voted)
+    this.poll.downVotes++;
+    this.voted = true;
   }
 }
